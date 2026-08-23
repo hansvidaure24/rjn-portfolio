@@ -50,7 +50,7 @@ export default function SocialMediaCampaignsPage() {
                         ))}
                     </div>
                 </div>
-                <Button href={projects.screencrush.link} className={styles.button}>Next Page</Button>
+                <Button href={projects.goldenvows.link} className={styles.button}>Next Page</Button>
             </main>
             <InstagramScript />
         </>

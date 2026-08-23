@@ -42,7 +42,7 @@ export default function ScreenCrushPage() {
                     <YouTubeEmbed id="m8X_4MWYS0U" className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.3s" }} />
                     <YouTubeEmbed id="r1TCMCwU7PI" className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.45s" }} />
                 </div>
-                <Button href={projects.goldenvows.link} className={styles.button} >Next Page</Button>
+                <Button href={projects.xxl.link} className={styles.button} >Next Page</Button>
             </main>
         </>
     )

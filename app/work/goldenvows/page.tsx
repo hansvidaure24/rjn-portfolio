@@ -32,7 +32,7 @@ export default function GoldenVowsPage() {
                     </p>
                     <div className={styles.heroVideo}>
                         <video
-                            src="/videos/Video1.mp4"
+                            src="/videos/Video1.mp4#t=1"
                             controls
                             playsInline
                             preload="metadata"
@@ -72,7 +72,7 @@ export default function GoldenVowsPage() {
                             />
                         </div>
                     </div>
-                    <Button href={projects.xxl.link} className={styles.button} >Next Page</Button>
+                    <Button href={projects.screencrush.link} className={styles.button} >Next Page</Button>
                 </div>
             </main>
         </>

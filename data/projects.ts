@@ -14,18 +14,6 @@ const projects: Record<string, Project> = {
       'https://www.youtube.com/embed/r1TCMCwU7PI',
     ],
   },
-  goldenvows: {
-    title: 'Golden Vows',
-    link: '/work/goldenvows',
-    hero: '/images/GoldenVows_Banner.png',
-    desc: 'Romantic storytelling and cinematic coverage for a luxury wedding experience.',
-    gallery: [
-      '/videos/Video1.mp4',
-      '/videos/Video2.mp4',
-      '/videos/Video3.mp4',
-      '/videos/Video4.mp4',
-    ],
-  },
   xxl: {
     title: 'XXL',
     link: '/work/xxl',
@@ -44,7 +32,19 @@ const projects: Record<string, Project> = {
     hero: '/images/SocialMediaCampaigns_Banner.png',
     desc: 'Platform-native photo and video content built to help brands stand out and reach audiences across social media.',
     gallery: []
-  }
+  },
+  goldenvows: {
+    title: 'Golden Vows',
+    link: '/work/goldenvows',
+    hero: '/images/GoldenVows_Banner.png',
+    desc: 'Romantic storytelling and cinematic coverage for a luxury wedding experience.',
+    gallery: [
+      '/videos/Video1.mp4',
+      '/videos/Video2.mp4',
+      '/videos/Video3.mp4',
+      '/videos/Video4.mp4',
+    ],
+  },
 }
 
 export default projects
