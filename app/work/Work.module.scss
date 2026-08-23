@@ -1,0 +1,321 @@
+@use '../variables.scss' as *;
+
+.visuallyHidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* =========================
+   Placeholders
+========================= */
+
+%heading {
+    font-family: $font-heading;
+    font-weight: $fw-bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+%body-text {
+    font-family: $font-body;
+    line-height: $lh-normal;
+}
+
+%center-narrow {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================
+   Banner
+========================= */
+
+.banner {
+    position: relative;
+
+    width: 100vw;
+    height: 33vh;
+    margin-top: calc(-100vh / 7);
+    overflow: hidden;
+
+    .bannerImage {
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+
+/* =========================
+   Layout
+========================= */
+
+.grid {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    margin-top: calc(-1 * calc(100vh / 3) / 2.5);
+    padding: 0;
+
+    @media (max-width: $view-laptop) and (orientation: landscape) {
+        margin-top: -7rem;
+    }
+}
+
+.content {
+    max-width: $content-max-width;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   Card
+========================= */
+
+.card {
+    position: relative;
+    display: flex;
+
+    height: 50vh;
+    overflow: hidden;
+
+    color: $color-white;
+    text-decoration: none;
+
+    @include fade-in-up(0.6s);
+}
+
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+
+.thumb {
+    object-fit: cover;
+    filter: grayscale(80%) brightness(80%) contrast(120%);
+}
+
+.card:hover .thumb {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(100%) contrast(100%);
+    transition: transform $transition-base, filter $transition-base;
+}
+
+.card:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: -3px;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+
+    @extend %heading;
+
+    @media (min-width: $view-tablet) {
+        font-size: $fs-h2;
+    }
+
+    @media (min-width: $view-laptop) {
+        font-size: $fs-h1;
+    }
+}
+
+
+/* =========================
+   Typography
+========================= */
+
+.projectTitle {
+    @extend %heading;
+
+    font-size: $fs-h1;
+    line-height: $lh-loose;
+    padding: 0 1rem;
+
+    @media (max-width: $view-laptop) {
+        font-size: $fs-h2;
+    }
+
+    @media (max-width: $view-tablet) {
+        font-size: $fs-h3;
+    }
+}
+
+.projectSummary {
+    @extend %body-text;
+    @extend %center-narrow;
+
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+
+    font-size: $fs-h3;
+    text-align: center;
+    color: $color-white;
+
+    border-top: 2px solid $color-white;
+    border-bottom: 2px solid $color-white;
+
+    @media (max-width: $view-laptop) {
+        font-size: $fs-body;
+        border-top: 1px solid $color-white;
+        border-bottom: 1px solid $color-white;
+    }
+}
+
+.role {
+    @extend %heading;
+
+    font-family: $font-accent;
+    font-size: $fs-h2;
+    line-height: $lh-normal;
+    padding: 0 1rem;
+
+    @media (max-width: $view-laptop) {
+        font-size: $fs-h4;
+    }
+}
+
+.sectionIntro {
+    @extend %body-text;
+    @extend %center-narrow;
+
+    font-size: $fs-h4;
+    text-align: center;
+    line-height: $lh-tight;
+    margin-bottom: 2rem;
+
+    @media (max-width: $view-laptop) {
+        font-size: $fs-body;
+    }
+}
+
+/* =========================
+   Hero Video
+========================= */
+
+.heroVideo {
+    width: 100%;
+    height: auto;
+    max-width: $content-max-width;
+    max-height: 600px;
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+
+    @media (max-width: $view-laptop) {
+        width: 90vw;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+
+/* =========================
+   Video Grid
+========================= */
+
+@mixin video-grid($gap-desktop, $gap-mobile: $gap-desktop) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap-desktop;
+
+    max-width: $container-max-width;
+    margin: 0 auto;
+    justify-items: center;
+
+    @media (max-width: $view-laptop) {
+        grid-template-columns: 1fr;
+        gap: $gap-mobile;
+    }
+}
+
+.smallGrid {
+    @include video-grid($section-spacing, $section-spacing-mobile);
+}
+
+.smallGridVideo {
+    @include video-grid($section-spacing-mobile);
+}
+
+.smallItem {
+    width: 450px;
+    max-width: 450px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    justify-self: center;
+
+    // odd item left alone in the last row spans the full width instead of sitting off-center
+    &:nth-child(odd):last-child {
+        grid-column: 1 / -1;
+        max-width: 550px;
+    }
+
+    @media (max-width: $view-laptop) {
+        width: 90vw;
+        max-width: 90vw;
+    }
+}
+
+.videoWrapper {
+    width: 450px;
+    height: auto;
+
+    overflow: hidden;
+    border-radius: 8px;
+    background: $color-black;
+    margin: 0;
+
+    @media (max-width: $view-laptop) {
+        width: 90vw;
+        max-width: 90vw;
+    }
+
+    @media (min-width: $view-laptop) {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* =========================
+   Instagram Grid
+========================= */
+
+.instagramGrid {
+    @include video-grid($section-spacing-mobile);
+}
+
+.instagramItem {
+    width: 100%;
+    max-width: 450px;
+    justify-self: center;
+
+    &:nth-child(odd):last-child {
+        grid-column: 1 / -1;
+    }
+
+    // Instagram's embedded blockquote carries its own inline width — force it to
+    // fill the grid cell instead so every item lines up at the same size
+    :global(.instagram-media) {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 450px !important;
+    }
+}
+
+
+/* =========================
+   Animations
+========================= */
+
+.reveal {
+    @include reveal-up(0.6s, ease, forwards);
+}

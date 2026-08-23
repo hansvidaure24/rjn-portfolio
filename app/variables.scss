@@ -1,0 +1,149 @@
+@use "sass:math";
+
+// =========================================
+// _variables.scss
+// Portfolio
+// =========================================
+
+// -----------------------------------------
+// 1. COLOR PALETTE (raw values)
+// -----------------------------------------
+
+// Neutrals
+$color-black:        #0a0a0a;
+$color-near-black:   #121212;
+$color-dark-gray:    #2a2a2a;
+$color-mid-gray:     #6b6b6b;
+$color-light-gray:   #c4c4c4;
+$color-off-white:    #f2f2f0;
+$color-white:        #ffffff;
+$color-accent:        #c9a063;
+
+// Utility
+$color-error:   #e25c5c;
+$color-success: #5cb88a;
+
+// -----------------------------------------
+// 4. TYPOGRAPHY
+// -----------------------------------------
+$font-heading: var(--font-heading), 'Cormorant Garamond', 'Playfair Display', serif;
+$font-body:    var(--font-body), 'Inter', 'Helvetica Neue', sans-serif;
+$font-accent:  'Courier New', monospace;
+
+$fs-h1: 4.5rem;
+$fs-h2: 3.5rem;
+$fs-h3: 2rem;
+$fs-h4: 1.5rem;
+$fs-body: 1rem;
+$fs-small: 0.85rem;
+$fs-caption: 0.75rem;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+$fw-logo: 900;
+
+$lh-tight: 1.1;
+$lh-normal: 1.5;
+$lh-loose: 1.8;
+
+$ls-heading: 0.02em;
+$ls-caption: 0.08em;
+
+// -----------------------------------------
+// 5. LAYOUT / CONTAINERS
+// -----------------------------------------
+$container-max-width:      1440px;
+$container-padding-x:      6vw;
+$container-padding-x-mobile: 5vw;
+
+$content-max-width:        1100px;
+$gallery-max-width:        1600px;
+
+$section-spacing:          8rem;
+$section-spacing-mobile:   4rem;
+
+// -----------------------------------------
+// 6. BREAKPOINTS
+// -----------------------------------------
+$view-mobile:  480px;
+$view-tablet:  768px;
+$view-laptop:  1024px;
+
+// -----------------------------------------
+// 7. NAVIGATION / HEADER
+// -----------------------------------------
+$nav-bg: $color-black;
+$nav-blur: 12px;
+$nav-gap: 12px;
+$nav-padding-bar: 20px;
+$nav-padding-links: 6px 12px;
+
+// -----------------------------------------
+// 8. IMAGE / MEDIA CONTAINERS
+// -----------------------------------------
+$thumbnail-radius: 20px;
+$thumbnail-small-radius: 12px;
+$thumbnail-aspect-landscape: math.div(3, 2);
+$thumbnail-aspect-square: math.div(1, 1);
+
+$image-hover-scale: 1.03;
+$image-transition-speed: 0.4s;
+$image-transition-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+// -----------------------------------------
+// 9. TRANSITIONS / EASING
+// -----------------------------------------
+$transition-fast: 0.2s ease;
+$transition-soft: 0.25s ease;
+$transition-base: 0.35s ease;
+$ease-spring: cubic-bezier(.2, .9, .2, 1);
+
+$radius-pill: 999px;
+$radius-small: 8px;
+
+$page-transition-duration: 0.8s;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin fade-in-up($duration: 0.6s, $timing: ease-out, $fill: forwards) {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp $duration $timing $fill;
+}
+
+@mixin reveal-up($duration: 0.6s, $timing: $transition-base, $fill: forwards) {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: reveal $duration $timing $fill;
+}
+
+
+// -----------------------------------------
+// 10. Z-INDEX SCALE
+// -----------------------------------------
+$z-base: 1;
+$z-nav: 100;

@@ -1,0 +1,73 @@
+@use '../app/variables.scss' as *;
+
+.form {
+    display: grid;
+    max-width: 700px;
+    margin: 0 auto;
+    gap: 16px;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 1px solid rgba($color-off-white, 0.08);
+    border-radius: 14px;
+    background: #0f0f0f;
+    color: $color-white;
+    font-family: $font-body;
+    font-size: 14px;
+    transition: 
+        border-color $transition-fast ease,
+        box-shadow $transition-fast ease;
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+    outline: none;
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba($color-accent, 0.2);
+}
+
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+    border-color: $color-error;
+}
+
+.input[aria-invalid="true"]:focus-visible,
+.textarea[aria-invalid="true"]:focus-visible {
+    box-shadow: 0 0 0 3px rgba($color-error, 0.2);
+}
+
+.textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.status {
+    color: $color-light-gray;
+    font-size: 0.95rem;
+    min-height: 1.4rem;
+}
+
+.error {
+    color: $color-error;
+}
+
+.success {
+    color: $color-success;
+}
+
+.sending {
+    color: $color-accent;
+}
+
+.visuallyHidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}

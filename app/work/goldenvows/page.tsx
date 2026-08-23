@@ -1,0 +1,80 @@
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import styles from '../Work.module.scss'
+import projects from '@/data/projects';
+import Button from '@/components/Button'
+
+export const metadata: Metadata = {
+  title: 'Golden Vows — RJN Portfolio',
+  description: 'A cinematic wedding film case study showing storytelling, editing, and emotional visual direction.',
+};
+
+export default function GoldenVowsPage() {
+    const project = projects.goldenvows;
+    
+    return (
+        <>
+            <main>
+                <div className={styles.banner}>
+                    <Image
+                        src={project.hero}
+                        alt=""
+                        fill
+                        className={styles.bannerImage}
+                        priority
+                        loading="eager"
+                    />
+                </div>
+                <div className={styles.content}>
+                    <h1 className={`${styles.projectTitle} ${styles.reveal}`}  style={{ animationDelay: "0.2s" }}>{project.title}</h1>
+                    <p className={`${styles.projectSummary} ${styles.reveal}`} style={{ animationDelay: "0.4s" }}>
+                        Founded in May 2025, Golden Vows Wedding Films was born from my passion for storytelling through film and preserving life&apos;s most beautiful moments. The  goal is to create wedding films that feel deeply personal, romantic, and cinematic.
+                    </p>
+                    <div className={styles.heroVideo}>
+                        <video
+                            src="/videos/Video1.mp4"
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className={styles.videoWrapper}
+                        />
+                    </div>
+                    <h2 className={`${styles.role} ${styles.reveal}`} style={{ animationDelay: "0.6s" }}>Position: Shot and Edited by Me!</h2>
+                    <p className={`${styles.sectionIntro} ${styles.reveal}`} style={{ animationDelay: "0.8s" }}>
+                        Telling love stories through authentic moments and cinematic storytelling. Creating films that allow couples to relive their day for years to come.
+                    </p>
+                    <div className={styles.smallGridVideo}>
+                        <div className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.0s" }}>
+                            <video
+                                src="/videos/Video2.mp4#t=1"
+                                className={styles.videoWrapper}
+                                controls
+                                playsInline
+                                preload="metadata"
+                            />
+                        </div>
+                        <div className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.15s" }}>
+                            <video
+                                src="/videos/Video4.mp4"
+                                className={styles.videoWrapper}
+                                controls
+                                playsInline
+                                preload="metadata"
+                            />
+                        </div>
+                        <div className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.3s" }}>
+                            <video
+                                src="/videos/Video3.mp4#t=1"
+                                className={styles.videoWrapper}
+                                controls
+                                playsInline
+                                preload="metadata"
+                            />
+                        </div>
+                    </div>
+                    <Button href={projects.xxl.link} className={styles.button} >Next Page</Button>
+                </div>
+            </main>
+        </>
+    )
+}

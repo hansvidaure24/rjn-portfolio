@@ -1,0 +1,8 @@
+@use '../app/variables.scss' as *;
+
+.youtubeVideo {
+  width: 100%;
+  background: $color-black;
+  overflow: hidden;
+  border-radius: $radius-small;
+}

@@ -1,0 +1,60 @@
+@use '../app/variables.scss' as *;
+
+.footer {
+    width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: auto;
+    padding: $nav-padding-bar;
+    background: $color-near-black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $nav-gap;
+}
+
+.inner {
+    font-size: 1rem;
+    color: $color-mid-gray;
+}
+
+.iconLink {
+    display: inline-flex;
+    align-items: center;
+    gap: $nav-gap;
+    padding: $nav-padding-links;
+    color: $color-light-gray;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-white;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $color-accent;
+        outline-offset: 3px;
+        border-radius: 6px;
+    }
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.label {
+    display: inline-block;
+}
+
+@media (max-width: $view-tablet) {
+    .label {
+        display: none;
+    }
+
+    .inner {
+        width: 100%;
+        text-align: center;
+    }
+}

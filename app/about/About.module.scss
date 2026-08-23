@@ -1,0 +1,141 @@
+@use '../variables.scss' as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "portrait  content"
+    "gallery   content";
+  gap: 16px;
+  padding: 40px;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+.portrait {
+  grid-area: portrait;
+  position: relative;
+  width: 100%;
+  aspect-ratio: $thumbnail-aspect-landscape;
+  max-height: 50vh; 
+  border-radius: $thumbnail-radius;
+  overflow: hidden;
+}
+
+.gallery {
+  grid-area: gallery;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.galleryItem {
+  position: relative;
+  flex: 1;
+  aspect-ratio: $thumbnail-aspect-square;
+  border-radius: $thumbnail-small-radius;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  align-self: stretch;
+  align-items: flex-start;
+  text-align: left;
+
+  gap: 24px;
+  padding: 72px 72px;
+  margin: 3.5rem 10rem;
+  border-radius: 20px;
+  background: $color-near-black;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: $color-light-gray;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: $font-heading;
+  font-size: $fs-h2;
+  font-weight: $fw-bold;
+  line-height: $lh-tight;
+  letter-spacing: -0.03em;
+  color: $color-white;
+  margin: 0;
+  max-width: 12ch;
+}
+
+.closing {
+  font-size: $fs-small;
+  color: $color-light-gray;
+  font-weight: $fw-bold;
+  margin-top: 12px;
+}
+
+.p {
+  font-size: $fs-body;
+  line-height: $lh-loose;
+  color: $color-light-gray;
+  max-width: 58ch;
+  margin: 0;
+}
+
+
+
+@media (max-width: $view-laptop) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "portrait"
+      "content"
+      "gallery";
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .portrait {
+    border-radius: $thumbnail-radius;
+  }
+
+  .content {
+    padding: 40px 24px;
+    border-radius: 16px;
+    align-self: auto;
+    margin: 0;
+  }
+
+  .gallery {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .galleryItem {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .button {
+    margin: 0 auto !important;
+  }
+}
+.content * {
+  @include fade-in-up($page-transition-duration);
+}

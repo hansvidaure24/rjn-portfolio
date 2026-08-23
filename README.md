@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RJN Portfolio
 
-## Getting Started
+A photography and videography portfolio for Randolf Nombrado (RJN Visuals) — built with Next.js, showcasing branded video work, wedding films, and social campaigns.
 
-First, run the development server:
+## Tech stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- React 19 + TypeScript
+- SCSS Modules for styling
+- [EmailJS](https://www.emailjs.com/) for the contact form (client-side, no backend)
+- Instagram's official embed widget for social campaign reels
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy these into a `.env.local` file at the project root (never commit this file):
 
-## Learn More
+```bash
+# EmailJS — dashboard.emailjs.com
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
 
-To learn more about Next.js, take a look at the following resources:
+# Destination address for contact form submissions.
+# Your EmailJS template's "To Email" field must be set to {{to_email}} for this to take effect.
+NEXT_PUBLIC_EMAILJS_TO_EMAIL=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Production site URL — used for metadataBase, robots.txt, and sitemap.xml.
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+When deploying, set all five in your hosting provider's environment variable settings — `.env.local` never leaves your machine.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` — start the dev server (Turbopack)
+- `npm run build` — production build
+- `npm run start` — serve the production build
+- `npm run lint` — run ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project structure
+
+```
+app/            routes (home, work, about, contact) + robots/sitemap
+components/     shared UI (nav, footer, contact form, embeds, buttons)
+components/tabs/  home page sections (work, services, referrals, contact CTA)
+data/projects.ts  project/case-study content
+hooks/          shared client hooks (e.g. scroll-triggered reveal)
+public/         images, videos, icons
+```
+
+## Deployment
+
+Deployed on [Vercel](https://vercel.com). Set the environment variables above in the project settings before the first deploy, and update `NEXT_PUBLIC_SITE_URL` to the real production domain once it's known.

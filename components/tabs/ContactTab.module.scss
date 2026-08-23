@@ -1,0 +1,62 @@
+@use '../../app/variables.scss' as *;
+
+.tab {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 2rem;
+  background-image: url('/images/circles.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contactBox {
+  width: min($container-max-width, 100%);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  min-height: 450px;
+  border: 2px solid $color-off-white;
+  border-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background: rgba($color-black, 0.25);
+  box-sizing: border-box;
+  max-width: $container-max-width;
+}
+
+.title {
+  font-size: $fs-h3;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: $view-tablet) {
+  .tab {
+    padding: 4rem 1.25rem;
+  }
+
+  .contactBox {
+    padding: 3rem 1.5rem;
+    border-radius: 40px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: $view-mobile) {
+  .tab {
+    padding: 3rem 1rem;
+  }
+
+  .contactBox {
+    padding: 2rem 1rem;
+  }
+}

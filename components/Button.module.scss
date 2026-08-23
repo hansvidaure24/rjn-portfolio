@@ -1,0 +1,47 @@
+@use '../app/variables.scss' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.75rem, 1.6vw, 1.2rem) clamp(1rem, 6vw, 2.8rem);
+    border: 2px solid $color-light-gray;
+    border-radius: $radius-pill;
+    font-size: $fs-body;
+    font-weight: 700;
+    color: white;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+    max-width: fit-content;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.button:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+.button:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+}
+
+.button:disabled,
+.button[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.left {
+    margin: 1rem 0;
+}

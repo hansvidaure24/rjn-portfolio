@@ -1,0 +1,39 @@
+@use '../variables.scss' as *;
+
+.section {
+    margin: 2.5rem auto;
+    text-align: center;
+}
+
+.reveal {
+    @include reveal-up(0.6s, ease, forwards);
+}
+
+.label {
+    font-size: $fs-small;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $color-light-gray;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-family: $font-heading;
+    font-size: $fs-h2;
+    margin-bottom: 12px;
+}
+
+.intro {
+    color: $color-light-gray;
+    margin-bottom: 24px;
+}
+
+@media (max-width: $view-laptop) {
+    .section {
+        margin: 1rem auto;
+        padding-inline: 20px;
+    }
+    .title {
+        font-size: $fs-h3;
+    }
+}
