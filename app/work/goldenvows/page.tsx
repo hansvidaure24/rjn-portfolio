@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../Work.module.scss'
 import projects from '@/data/projects';
 import Button from '@/components/Button'
+import YouTubeEmbed from '@/components/YoutubeVideo'
 
 export const metadata: Metadata = {
   title: 'Golden Vows — RJN Portfolio',
@@ -28,7 +29,7 @@ export default function GoldenVowsPage() {
                 <div className={styles.content}>
                     <h1 className={`${styles.projectTitle} ${styles.reveal}`}  style={{ animationDelay: "0.2s" }}>{project.title}</h1>
                     <p className={`${styles.projectSummary} ${styles.reveal}`} style={{ animationDelay: "0.4s" }}>
-                        Founded in May 2025, Golden Vows Wedding Films was born from my passion for storytelling through film and preserving life&apos;s most beautiful moments. The  goal is to create wedding films that feel deeply personal, romantic, and cinematic.
+                        With my passion to capture beautiful images and tell everlasting stories, I began filming weddings to help couples capture the most important days of their lives in a romantic, tear-jerking way. Below are some of the couples I&apos;ve had the pleasure of capturing their days, from 1 minute trailers to 30 min films!
                     </p>
                     <div className={styles.heroVideo}>
                         <video
@@ -39,9 +40,8 @@ export default function GoldenVowsPage() {
                             className={styles.videoWrapper}
                         />
                     </div>
-                    <h2 className={`${styles.role} ${styles.reveal}`} style={{ animationDelay: "0.6s" }}>Position: Shot and Edited by Me!</h2>
-                    <p className={`${styles.sectionIntro} ${styles.reveal}`} style={{ animationDelay: "0.8s" }}>
-                        Telling love stories through authentic moments and cinematic storytelling. Creating films that allow couples to relive their day for years to come.
+                    <p className={`${styles.sectionIntro} ${styles.reveal}`} style={{ animationDelay: "0.6s" }}>
+                        I&apos;ve had the honor of not only filming weddings as an independent creative but also helping studios like Raynor Studios, Two Soul Wedding Films and Enchanted Celebrations deliver cinematic wedding films to their couples!
                     </p>
                     <div className={styles.smallGridVideo}>
                         <div className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.0s" }}>
@@ -71,7 +71,10 @@ export default function GoldenVowsPage() {
                                 preload="metadata"
                             />
                         </div>
+                        <YouTubeEmbed id="xq3QYcRTw2k" className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.45s" }} />
+                        <YouTubeEmbed id="MX5QOl4zwD4" className={`${styles.smallItem} ${styles.reveal}`} style={{ animationDelay: "1.6s" }} />
                     </div>
+                    <Button href="/contact" className={styles.button} >Book Now</Button>
                     <Button href={projects.screencrush.link} className={styles.button} >Next Page</Button>
                 </div>
             </main>
