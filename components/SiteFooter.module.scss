@@ -17,7 +17,9 @@
 
 .inner {
     font-size: 1rem;
-    color: $color-mid-gray;
+    // A shade lighter than $color-mid-gray: 4.8:1 on the footer's near-black,
+    // over the 4.5:1 small text needs (mid-gray was 3.5:1).
+    color: #818181;
 }
 
 .iconLink {

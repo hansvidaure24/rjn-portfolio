@@ -45,7 +45,7 @@ export default function SocialMediaCampaignsPage() {
                     <div className={styles.instagramGrid}>
                         {reels.map((url, i) => (
                             <div key={url} className={`${styles.instagramItem} ${styles.reveal}`} style={{ animationDelay: `${1.0 + i * 0.15}s` }}>
-                                <InstagramEmbed url={url} />
+                                <InstagramEmbed url={url} title={`Social media campaign reel ${i + 1} of ${reels.length}, on Instagram`} />
                             </div>
                         ))}
                     </div>
