@@ -20,7 +20,9 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: url('/images/RandolfWork.jpg') center / cover no-repeat;
+    // WebP (50 KB, was a 209 KB JPEG), preloaded at high priority by app/page.tsx:
+    // it's the home page's largest paint. The JPEG stays for link previews.
+    background: url('/images/RandolfWork.webp') center / cover no-repeat;
     filter: grayscale(75%) brightness(50%) contrast(120%);
 
 }
