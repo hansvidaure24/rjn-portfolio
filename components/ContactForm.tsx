@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import styles from './ContactForm.module.scss'
 import Button from './Button'
@@ -13,6 +13,13 @@ export default function ContactForm() {
   const [status, setStatus] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [invalidField, setInvalidField] = useState<'email' | 'phone' | null>(null)
+  // Spam guard: a field people never see (bots fill in every field), and a
+  // minimum time between the form appearing and being sent.
+  const [website, setWebsite] = useState('')
+  const shownAt = useRef(0)
+  useEffect(() => {
+    shownAt.current = Date.now()
+  }, [])
   const isSending = status === 'sending'
 
   function toPascalCase(value: string) {
@@ -55,10 +62,27 @@ export default function ContactForm() {
     return parts.join(' ')
   }
 
+  function clearForm() {
+    setName('')
+    setEmail('')
+    setPhone('')
+    setMessage('')
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setStatus('sending')
     setInvalidField(null)
+
+    // Likely a bot: nothing is sent, but it sees the usual "sent" message,
+    // so it has nothing to adapt to.
+    if (website || Date.now() - shownAt.current < 3000) {
+      setStatus('sent')
+      setErrorMessage(null)
+      clearForm()
+      return
+    }
+
+    setStatus('sending')
 
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
@@ -102,10 +126,7 @@ export default function ContactForm() {
       await emailjs.send(serviceId, templateId, templateParams, publicKey)
       setStatus('sent')
       setErrorMessage(null)
-      setName('')
-      setEmail('')
-      setPhone('')
-      setMessage('')
+      clearForm()
     } catch (err) {
       setStatus('error')
       const msg =
@@ -175,6 +196,20 @@ export default function ContactForm() {
         aria-required="true"
         disabled={isSending}
       />
+
+      {/* Off-screen and skipped by Tab and screen readers: only bots fill it in. */}
+      <div className={styles.visuallyHidden} aria-hidden="true">
+        <label htmlFor="cf-website">Website</label>
+        <input
+          id="cf-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
 
       <Button type="submit" className={styles.button} disabled={isSending} aria-busy={isSending}>Send Message</Button>
       {status === 'sending' && (
